@@ -52,10 +52,10 @@ Tests MUST use **randomly generated IDs** (e.g., `UUID.randomUUID()`, `Date.now(
 
 ### Pipeline: Implement → Review → Simplify → Security Review → Final Review
 
-1. **Step 1 — Code Review (parallel agents):** Spawn **multiple `/code-review:code-review` subagents in parallel** — one per changed/created file (or logical module). Each agent reviews its assigned file(s) for bugs, logic errors, and adherence to project conventions. Collect all findings.
+1. **Step 1 — Code Review (parallel agents):** Spawn **multiple `feature-dev:code-reviewer` subagents in parallel** — one per changed/created file (or logical module). Each agent reviews its assigned file(s) for bugs, logic errors, and adherence to project conventions. Collect all findings.
 2. **Step 2 — Code Simplification (parallel agents):** After all Step 1 agents complete and their feedback is applied, spawn **multiple `code-simplifier` subagents in parallel** — one per changed/created file. Each agent simplifies, removes redundant code, and improves clarity while preserving all functionality. Apply all changes.
 3. **Step 3 — Security Review (parallel agents):** After all Step 2 agents complete and changes are applied, spawn **multiple `security-review` subagents in parallel** — one per changed/created file. Each agent reviews for security vulnerabilities (injection, XSS, path traversal, secret leakage, OWASP top 10, etc.). Collect all findings and fix before proceeding.
-4. **Step 4 — Final Code Review (parallel agents):** After all Step 3 agents complete and their feedback is applied, spawn **multiple `/code-review:code-review` subagents in parallel** again — one per modified file. This final pass verifies that simplification and security fixes did not introduce regressions and that the code meets quality standards.
+4. **Step 4 — Final Code Review (parallel agents):** After all Step 3 agents complete and their feedback is applied, spawn **multiple `feature-dev:code-reviewer` subagents in parallel** again — one per modified file. This final pass verifies that simplification and security fixes did not introduce regressions and that the code meets quality standards.
 
 ### Rules
 
